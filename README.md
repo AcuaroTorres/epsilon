@@ -11,19 +11,24 @@
 - php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
 
 * Add lines in composer.json 
+```php
         "psr-4": {
             "App\\": "app/",
             "Modules\\": "Modules/"
         }
-- composer dump-autoload
+```
+- $ composer dump-autoload
 
 
 And add the service provider in `config/app.php`:
 
 ```php
 Jenssegers\Mongodb\MongodbServiceProvider::class,
-'Jenssegers\Mongodb\Auth\PasswordResetServiceProvider',
-'Jenssegers\Mongodb\Session\SessionServiceProvider',
+
+/* For extra options, session and fix passwordreset service*/
+
+Jenssegers\Mongodb\Auth\PasswordResetServiceProvider::class,
+Jenssegers\Mongodb\Session\SessionServiceProvider::class,
 ```
 
 
@@ -58,12 +63,12 @@ Change the session driver in app/config/session.php to mongodb:
 'driver' => 'mongodb',
 ```
 
-### Alias
+### Alias for MongoDB
 
 You may also register an alias for the MongoDB model by adding the following to the alias array in `config/app.php`:
 
 ```php
-'Moloquent'       => Jenssegers\Mongodb\Eloquent\Model::class,
+'Moloquent' => Jenssegers\Mongodb\Eloquent\Model::class,
 ```
 
 This will allow you to use the registered alias like:
