@@ -111,3 +111,41 @@ use Jenssegers\Mongodb\Auth\User as Authenticatable;
 * Edit User model to add run to $filliable property
 * Edit LoginController to overwerite username() method
 * Edit the login view to swap the email input field with run input field
+
+
+### Laravel permission MongoDB
+You can install the package via composer:
+
+``` bash
+composer require mostafamaklad/laravel-permission-mongodb
+```
+
+In Laravel 5.5 the service provider will automatically get registered. In older versions of the framework just add the service provider in `config/app.php` file:
+
+```php
+'providers' => [
+    // ...
+    Maklad\Permission\PermissionServiceProvider::class,
+];
+```
+
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="Maklad\Permission\PermissionServiceProvider" --tag="config"
+```
+
+## Usage
+
+First, add the `Maklad\Permission\Traits\HasRoles` trait to your `User` model(s):
+
+```php
+...
+use Maklad\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+    use ..., HasRoles;
+
+    // ...
+}
+```

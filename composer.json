@@ -11,6 +11,7 @@
         "jenssegers/mongodb-session": "^1.2",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+        "mostafamaklad/laravel-permission-mongodb": "^1.7",
         "nwidart/laravel-modules": "^3.1"
     },
     "require-dev": {
