@@ -110,6 +110,12 @@ use Jenssegers\Mongodb\Auth\User as Authenticatable;
 	* Add run to create() method
 * Edit User model to add run to $filliable property
 * Edit LoginController to overwerite username() method
+```
+    public function username()
+    {
+        return 'run';
+    }
+```
 * Edit the login view to swap the email input field with run input field
 
 
